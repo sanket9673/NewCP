@@ -24,20 +24,22 @@ public:
         // return res ;
 
         // Iterative apporach
-        vector<int> res ;
-        if (root == nullptr) return res ;
-        queue<TreeNode*> q ;
-        q.push(root) ;
-        while (!q.empty()) {
-            int n = q.size() ;
-            for (int i = 0; i < n; i++) {
-                TreeNode* num = q.front() ;
-                q.pop();
-                res.push_back(num -> val) ;
-                if (num -> left != nullptr) q.push(num -> left) ;
-                if (num -> right != nullptr) q.push(num -> right) ;
-            }
+        vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> res;
+        if (!root) return res;
+
+        stack<TreeNode*> st;
+        st.push(root);
+
+        while (!st.empty()) {
+            TreeNode* node = st.top();
+            st.pop();
+
+            res.push_back(node->val);   // root first
+
+            if (node->right) st.push(node->right); // push right first
+            if (node->left) st.push(node->left);   // then left (so left is processed first)
         }
-        return res ;
+        return res;
     }
 };
