@@ -12,6 +12,9 @@
 class Solution {
 public:
     vector<vector<int>> verticalTraversal(TreeNode* root) {
+        // idea = we need to store {value, index(mapping), level}
+
+        
         // Bfs idea code written blow
         vector<vector<int>> res ;
         map<int, vector<pair<int, int>>> mp ;
