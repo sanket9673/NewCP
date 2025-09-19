@@ -13,6 +13,10 @@ class Solution {
             return count ;
         }
         long long countExcellentPairs(vector<int>& nums, int k) {
+            //idea
+            // make pair of {bits, (number having that bits)}
+            // check for low bits(AND) & many bits(OR)
+            // 2 & 3 === AND(2) & OR(3) -- IDEA (thats range)
             long long result = 0 ;
             unordered_set<int> smp(nums.begin(), nums.end()) ;
             unordered_map<int, int> res ;
@@ -25,7 +29,7 @@ class Solution {
                 for (auto [newbits, newval] : res) {
                     if (bits != newbits) {
                         int x = bits + newbits ;
-                        if (x >= k) result += (res[bits] * res[newbits]) ;
+                        if (x >= k) result += (res[bits] * res[newbits]) ;N
                     }
                 }
                 // int x = abs(k - bits) ;
