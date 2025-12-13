@@ -11,6 +11,7 @@ public:
                 if (target == total) {
                     // result = total ;
                     // diff2 = 0 ;
+                    // diff1 = diff2 ;
                     // left++ ;
                     // right-- ;
                     // continue;
