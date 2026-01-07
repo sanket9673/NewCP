@@ -1,3 +1,5 @@
+// MAXIMIZE THE Minimum (Binary search on the answer) --> here we consider atleast and above
+// reverse is for "minimize tge maximum" where we consider atmost and lesser --> book allocation problem
 class Solution {
   public:
     bool canfit(vector<int>& stalls, int k, int dist) {
