@@ -1,6 +1,7 @@
 class Solution {
 public:
     bool canship(vector<int>& weights, int days, int w) {
+        // Consider the least weight 'D' <= to ship all packages in D days
         int pack = 0, useday = 1 ;
         for (int x : weights) {
             if (x > w) return false ;
@@ -30,7 +31,5 @@ public:
             else low = mid + 1 ;
         }
         return result ;
-
-    
     }
 };
