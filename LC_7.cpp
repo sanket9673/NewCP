@@ -14,4 +14,4 @@ public:
         if (res <= INT_MIN || res >= INT_MAX) return 0 ;
         return (int)res ;
     }
-};
+}; 
