@@ -11,6 +11,7 @@ public:
                 count = 1 ;
             }
         }
+        
         res = max(count, res) ;
         return res ;
     }
