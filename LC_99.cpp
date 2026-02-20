@@ -11,33 +11,61 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode* root, vector<int>& res) {
+    // Follow up - SC : O(1)
+    TreeNode* prev = nullptr ;
+    TreeNode* first = nullptr ;
+    TreeNode* second = nullptr ;
+
+    void inorder(TreeNode* root) {
         if (root == nullptr) return ;
-        inorder(root -> left, res) ;
-        res.push_back(root -> val) ;
-        inorder(root -> right, res) ;
-    }
-    void chk(TreeNode* root, unordered_map<int, int>& mp) {
-        if (root == nullptr) return ;
-        if (mp.count(root -> val) != 0) {
-            root -> val = mp[root -> val] ;
-        }
-        chk(root -> left, mp) ;
-        chk(root -> right, mp) ;
-    }
-    void recoverTree(TreeNode* root) {
-        vector<int> res ;
-        inorder(root, res) ;
-        vector<int> smp(res.begin(), res.end()) ;
-        sort(smp.begin(), smp.end()) ;
-        unordered_map<int, int> mp ;
-        for (int i = 0; i < res.size(); i++) {
-            if (res[i] != smp[i]) {
-                mp[res[i]] = smp[i] ;
-                mp[smp[i]] = res[i] ;
-                // dont break here, might be more than one voilations
+        inorder(root -> left) ;
+
+        // detect voilation
+        if (prev != nullptr && prev -> val > root -> val) {
+            // first time voilation
+            if (first == nullptr) {
+                first = prev ;
             }
+
+            // always update second
+            second = root ;
         }
-        chk(root, mp) ;
+        prev = root ;
+        inorder(root -> right) ;
     }
+
+    void recoverTree(TreeNode* root) {
+        inorder(root) ;
+        swap(first -> val, second -> val) ;
+    }    
+    
+    // void inorder(TreeNode* root, vector<int>& res) {
+    //     if (root == nullptr) return ;
+    //     inorder(root -> left, res) ;
+    //     res.push_back(root -> val) ;
+    //     inorder(root -> right, res) ;
+    // }
+    // void chk(TreeNode* root, unordered_map<int, int>& mp) {
+    //     if (root == nullptr) return ;
+    //     if (mp.count(root -> val) != 0) {
+    //         root -> val = mp[root -> val] ;
+    //     }
+    //     chk(root -> left, mp) ;
+    //     chk(root -> right, mp) ;
+    // }
+    // void recoverTree(TreeNode* root) {
+    //     vector<int> res ;
+    //     inorder(root, res) ;
+    //     vector<int> smp(res.begin(), res.end()) ;
+    //     sort(smp.begin(), smp.end()) ;
+    //     unordered_map<int, int> mp ;
+    //     for (int i = 0; i < res.size(); i++) {
+    //         if (res[i] != smp[i]) {
+    //             mp[res[i]] = smp[i] ;
+    //             mp[smp[i]] = res[i] ;
+    //             // dont break here, might be more than one voilations
+    //         }
+    //     }
+    //     chk(root, mp) ;
+    // }
 };
