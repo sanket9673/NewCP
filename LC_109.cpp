@@ -39,7 +39,9 @@ public:
 
         // middle element (main root)
         TreeNode* root = new TreeNode(slow -> val) ;
-        if (head == slow) return root ;
+
+
+        if (head == slow) return root ; // Terminating case
         root -> left = sortedListToBST(head) ;
         root -> right = sortedListToBST(slow -> next) ;
         return root ;
