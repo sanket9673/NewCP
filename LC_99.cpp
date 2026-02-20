@@ -35,6 +35,7 @@ public:
             if (res[i] != smp[i]) {
                 mp[res[i]] = smp[i] ;
                 mp[smp[i]] = res[i] ;
+                // dont break here, might be more than one voilations
             }
         }
         chk(root, mp) ;
