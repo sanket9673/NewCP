@@ -14,7 +14,15 @@ public:
     TreeNode* build(vector<int>& nums, int l, int r) {
         if (l > r) return nullptr ; // l == r means one element exists
         TreeNode* root = new TreeNode(nums[l]) ;
-        int mid = r + 1 ;
+        int mid = r + 1 ; // IMPORTANT
+        // Case 1: Found first greater element
+        // → split normally
+
+        // Case 2: No greater element found
+        // → mid = r+1
+        // → left = l+1 to r
+        // → right = r+1 to r (invalid → null)
+
         for (int i = l + 1; i <= r; i++) {
             if (nums[l] < nums[i]) {mid = i; break;}
         }
