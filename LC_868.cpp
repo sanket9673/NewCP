@@ -16,6 +16,7 @@ public:
         for (int i = 0; i < rest.size() - 1; i++) {
             ans = max(ans, rest[i+1] - rest[i]) ;
         }
+        
         return ans ;
     }
 };
