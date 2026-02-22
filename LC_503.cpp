@@ -19,6 +19,7 @@ public:
             if (res.count(i) == 0) nums[i] = -1 ;
             else nums[i] = res[i] ;
         }
+        
         return nums ;
     }
 };
